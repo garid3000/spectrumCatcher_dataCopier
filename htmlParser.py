@@ -21,7 +21,7 @@ class MyHTMLParser(HTMLParser):
         #print("Encountered an end tag :", tag)
 
     def handle_data(self, data):
-        if ('.json' in data) or ('jpg' in data): #removed 'bmp'
+        if ('.json' in data) or ('jpg' in data) or ('bmp' in data):
             print("Encountered some data  :", data)
             os.system("echo \"" + data + "\" >> fileList.txt")
 
