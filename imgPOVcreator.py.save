@@ -1,0 +1,28 @@
+import os, sys
+
+ddir = ''
+if len(sys.argv) == 2:
+	ddir = sys.argv[-1]
+else:
+	print("err: python3 imgPOVcreator.py")
+
+
+def cropper(orig_1920_1080):
+    t = np.flip(np.asarrayorig_1920_1080, dtype=np.int16),axis=0)
+    return t[400:1400, :,:]
+
+
+povDir = os.path.join(ddir, "jpgPov")
+idsfna = os.path.join(ddir, "id.txt")
+ids = open(idsfna, "r").readlines()
+ids = [z.split(".")[0].split("e_")[1] for z in ids]
+imgDir = [os.path.join(povDir, "VeggieCamera_crops_picture_" + z + "jpg") for z in ids]
+print(ids, imgDir)
+if not os.path.isdir(povDir):
+	try:
+		os.mkdir(povDir)
+	except:
+		print("error while making folder:", povDir)
+		sys.exit()
+
+
