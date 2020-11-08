@@ -4,13 +4,22 @@ from html.parser import HTMLParser
 import platform
 print(platform.system())
 if platform.system() == 'Linux':
-	os.system("rm file.txt")
+    try:
+        os.system("rm file.txt")
+    except:
+        pass
+    try:
+        os.system("rm fileList.txt")
+        print("file deleted")
+    except:
+        pass
 elif platform.system() == "Windows":
 	print("not developed for windows yet")
 	sys.exit()
 else:
 	print("could not recognize your OS")
 	sys.exit()
+
 class MyHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         pass
@@ -21,8 +30,9 @@ class MyHTMLParser(HTMLParser):
         #print("Encountered an end tag :", tag)
 
     def handle_data(self, data):
-        if ('.json' in data) or ('jpg' in data): # or ('bmp' in data):
-            if '20201014' in data:
+        print(data)
+        if ('.json' in data) or ('jpg' in data) or ('bmp' in data):
+            if '20201108' in data:
                 print("Encountered some data  :", data)
                 os.system("echo \"" + data + "\" >> fileList.txt")
 
