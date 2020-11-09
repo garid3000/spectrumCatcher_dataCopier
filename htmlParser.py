@@ -32,7 +32,7 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         print(data)
         if ('.json' in data) or ('jpg' in data) or ('bmp' in data):
-            if '20201108' in data:
+            if '20201109' in data:
                 print("Encountered some data  :", data)
                 os.system("echo \"" + data + "\" >> fileList.txt")
 
